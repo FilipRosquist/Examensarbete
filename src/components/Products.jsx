@@ -52,17 +52,22 @@ const Products = () => {
                         <img src={product.image} alt={product.title} className='w-full h-auto mb-14'/>
                         <div className='absolute left-0 right-0 bottom-5 flex justify-center'>
                             <div className='inline-block bg-white w-3/4 px-4 py-2 shadow-md'>
-                                <h2 className='text-xl font-semibold text-gray-800'>
-                                    {product.title}
-                                </h2>
-                                <p className='text-gray-500 text-sm'>
-                                    {product.price} <span></span> {product.location}
+                            <h2 className='text-xl font-semibold text-gray-800'>
+                                {product.title}
+                            </h2>
+                            
+                            <div className='flex justify-end items-center gap-4 mt-2'>
+                                <p className='text-gray-800 text-lg font-semibold'>
+                                    {product.price}
                                 </p>
-
+                                
+                                <button onClick={() => handleAddToCart(product)} className='bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-900 transition'>
+                                    Add to Cart
+                                </button>
                             </div>
-
                         </div>
                     </div>
+                </div>
                 ))}
             </div>
         </div>

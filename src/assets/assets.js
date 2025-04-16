@@ -8,12 +8,12 @@ import right_arrow from './right_arrow.svg'
 import header_img from '/header_img.png'
 import header from '/header.jpg'
 import brand_img from './brand_img.png'
-import product_img_1 from './product_img_1.jpg'
-import product_img_2 from './product_img_2.jpg'
-import product_img_3 from './product_img_3.jpg'
-import product_img_4 from './product_img_4.jpg'
-import product_img_5 from './product_img_5.jpg'
-import product_img_6 from './product_img_6.jpg'
+import product1 from './product1.png'
+import product2 from './product2.png'
+import product3 from './product3.png'
+import product4 from './product4.png'
+import product5 from './product5.png'
+import product6 from './product6.png'
 import profile_img_1 from './profile_img_1.png'
 import profile_img_2 from './profile_img_2.png'
 import profile_img_3 from './profile_img_3.png'
@@ -33,77 +33,73 @@ export const assets = {
     header_img,
     header,
     brand_img,
-    product_img_1,
-    product_img_2,
-    product_img_3,
-    product_img_4,
+    product1,
+    product2,
+    product3,
+    product4,
+    product5,
+    product6,
     left_arrow,
     right_arrow,
 }
 
 export const productsData = [
     {
-      title: "Skyline Haven",
-      price: "$2,50,000",
-      location: "California",
-      image: product_img_1
+      title: "Water Powered Brush",
+      price: "$69.99",
+      image: product1
     },
     {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: product_img_2
+      title: "Installation Tool",
+      price: "$49.00",
+      image: product2
     },
     {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: product_img_3
+      title: "Solar Powered Brush",
+      price: "$299.00",
+      image: product3
     },
     {
-      title: "Central Square",
-      price: "$2,50,000",
-      location: "Los Angeles",
-      image: product_img_4
+      title: "Cleaning Kit",
+      price: "$79.99",
+      image: product4
     },
     {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: product_img_5
+      title: "Suction Cup",
+      price: "$99.99",
+      image: product5
     },
     {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: product_img_6
+      title: "Solar Tool Roller",
+      price: "$149.99",
+      image: product6
     },
     
   ];
 
-  export const testimonialsData = [
+  export const reviewData = [
     {
-        name: "Donald Jackman",
+        name: "Michael Nelson",
         title: "Marketing Manager",
         image: profile_img_1,
         alt: "Portrait of Donald Jackman",
         rating: 5,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
+        text: "Pan-El made switching to solar effortless. The team was professional, fast, and left everything spotless. I'm already seeing savings on my energy bill!"
     },
     {
-        name: "Richard Nelson",
-        title: "UI/UX Designer",
+        name: "Simon West",
+        title: "Nurse",
         image: profile_img_2,
         alt: "Portrait of Richard Nelson",
         rating: 4,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
+        text: "From consultation to installation, Pan-El exceeded expectations. They explained every step and had the panels up in just two days. Highly recommend!"
     },
     {
-        name: "James Washington",
-        title: "Co-Founder",
+        name: "Ryan Larson",
+        title: "Sales Director",
         image: profile_img_3,
         alt: "Portrait of James Washington",
         rating: 5,
-        text: "From the very first meeting, they understood my vision and helped me find the perfect property. Their attention to detail and commitment to client satisfaction is unmatched."
+        text: "Fantastic experience! The installers were punctual and polite, and the system works like a charm. Great value for the quality of service."
     }
 ];
