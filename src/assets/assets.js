@@ -8,12 +8,12 @@ import right_arrow from './right_arrow.svg'
 import header_img from '/header_img.png'
 import header from '/header.jpg'
 import brand_img from './brand_img.png'
-import project_img_1 from './project_img_1.jpg'
-import project_img_2 from './project_img_2.jpg'
-import project_img_3 from './project_img_3.jpg'
-import project_img_4 from './project_img_4.jpg'
-import project_img_5 from './project_img_5.jpg'
-import project_img_6 from './project_img_6.jpg'
+import product_img_1 from './product_img_1.jpg'
+import product_img_2 from './product_img_2.jpg'
+import product_img_3 from './product_img_3.jpg'
+import product_img_4 from './product_img_4.jpg'
+import product_img_5 from './product_img_5.jpg'
+import product_img_6 from './product_img_6.jpg'
 import profile_img_1 from './profile_img_1.png'
 import profile_img_2 from './profile_img_2.png'
 import profile_img_3 from './profile_img_3.png'
@@ -33,50 +33,50 @@ export const assets = {
     header_img,
     header,
     brand_img,
-    project_img_1,
-    project_img_2,
-    project_img_3,
-    project_img_4,
+    product_img_1,
+    product_img_2,
+    product_img_3,
+    product_img_4,
     left_arrow,
     right_arrow,
 }
 
-export const projectsData = [
+export const productsData = [
     {
       title: "Skyline Haven",
       price: "$2,50,000",
       location: "California",
-      image: project_img_1
+      image: product_img_1
     },
     {
       title: "Vista Verde",
       price: "$2,50,000",
       location: "San Francisco",
-      image: project_img_2
+      image: product_img_2
     },
     {
       title: "Serenity Suites",
       price: "$2,50,000",
       location: "Chicago",
-      image: project_img_3
+      image: product_img_3
     },
     {
       title: "Central Square",
       price: "$2,50,000",
       location: "Los Angeles",
-      image: project_img_4
+      image: product_img_4
     },
     {
       title: "Vista Verde",
       price: "$2,50,000",
       location: "San Francisco",
-      image: project_img_5
+      image: product_img_5
     },
     {
       title: "Serenity Suites",
       price: "$2,50,000",
       location: "Chicago",
-      image: project_img_6
+      image: product_img_6
     },
     
   ];
