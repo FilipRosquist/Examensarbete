@@ -28,7 +28,7 @@ const About = () => {
                     </div>
                 </div>
                 <p className='my-10 max-w-lg'>Pan-El is a forward-thinking solar panel company dedicated to sustainable energy solutions. Specializing in efficient, sleek solar installations for homes and businesses, Pan-El helps customers reduce energy costs and environmental impact. With top-tier technology and expert service, Pan-El is powering a cleaner, brighter future—one rooftop at a time.</p>
-                <button className='bg-blue-800 text-white px-8 py-2 rounded'>Learn More</button>
+                <button className='bg-blue-800 hover:bg-blue-700 text-white px-8 py-2 rounded'>Learn More</button>
             </div>
         </div>
       

@@ -56,13 +56,13 @@ const Products = () => {
                                 {product.title}
                             </h2>
                             
-                            <div className='flex justify-end items-center gap-4 mt-2'>
+                            <div className='flex justify-between items-center gap-4 mt-2'>
                                 <p className='text-gray-800 text-lg font-semibold'>
                                     {product.price}
                                 </p>
                                 
-                                <button onClick={() => handleAddToCart(product)} className='bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-900 transition'>
-                                    Add to Cart
+                                <button onClick={() => handleAddToCart(product)} className='bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500 transition'>
+                                Add
                                 </button>
                             </div>
                         </div>
@@ -70,6 +70,7 @@ const Products = () => {
                 </div>
                 ))}
             </div>
+            <button className='bg-blue-800 hover:bg-blue-700 text-white mt-10 px-8 py-2 rounded block mx-auto'>More Products</button>
         </div>
 
 
