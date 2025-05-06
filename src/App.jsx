@@ -5,6 +5,7 @@ import Products from './components/Products'
 import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import { ToastContainer } from 'react-toastify';
+import Footer from './components/footer'
 // import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Products/>
       <Reviews/>
       <Contact/>
+      <Footer/>
     </div>
   )
 }
