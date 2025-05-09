@@ -29,12 +29,12 @@ const Navbar = () => {
           {/* Desktop Buttons */}
           <div className='hidden md:flex gap-4'>
             <Link to="/signup">
-              <button className='bg-transparent text-white px-6 py-2 rounded font-semibold border-2 border-white hover:bg-gray-50 transition'>
+              <button className='bg-transparent text-white px-6 py-2 rounded font-semibold border-2 hover:text-gray-300 hover:border-gray-300 transition'>
                 Sign up
               </button>
             </Link>
             <Link to="/login">
-              <button className='bg-transparent text-white px-6 py-2 rounded font-semibold border-2 border-white hover:bg-gray-50 transition'>
+              <button className='bg-transparent text-white px-6 py-2 rounded font-semibold border-2 hover:text-gray-300 hover:border-gray-300 transition'>
                 Log in
               </button>
             </Link>
@@ -66,18 +66,18 @@ const Navbar = () => {
         </div>
 
         <ul className='flex flex-col items-center gap-4 mt-5 px-5 text-lg font-medium text-black'>
-          <Link to="/home" onClick={() => setShowMobileMenu(false)} className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center'>Home</Link>
-          <Link to="/about" onClick={() => setShowMobileMenu(false)} className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center'>About</Link>
-          <Link to="/products" onClick={() => setShowMobileMenu(false)} className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center'>Products</Link>
-          <Link to="/contact" onClick={() => setShowMobileMenu(false)} className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center'>Contact</Link>
+          <Link to="/home" onClick={() => setShowMobileMenu(false)} className='hover:text-gray-400 px-4 py-2 rounded w-full text-center'>Home</Link>
+          <Link to="/about" onClick={() => setShowMobileMenu(false)} className='hover:text-gray-400 px-4 py-2 rounded w-full text-center'>About</Link>
+          <Link to="/products" onClick={() => setShowMobileMenu(false)} className='hover:text-gray-400 px-4 py-2 rounded w-full text-center'>Products</Link>
+          <Link to="/contact" onClick={() => setShowMobileMenu(false)} className='hover:text-gray-400 px-4 py-2 rounded w-full text-center'>Contact</Link>
         </ul>
 
         {/* Mobile Buttons */}
         <div className='flex flex-col items-center gap-4 mt-8 px-6'>
-          <Link to="/signup" onClick={() => setShowMobileMenu(false)} className='bg-black text-white w-full max-w-[100px] py-2 rounded-full font-semibold hover:bg-gray-800 transition text-center'>
+          <Link to="/signup" onClick={() => setShowMobileMenu(false)} className='bg-black text-white w-full max-w-[100px] py-2 rounded font-semibold hover:bg-gray-800 transition text-center'>
             Sign up
           </Link>
-          <Link to="/login" onClick={() => setShowMobileMenu(false)} className='bg-transparent text-black w-full max-w-[100px] py-2 rounded-full font-semibold border-2 border-black hover:bg-gray-200 transition text-center'>
+          <Link to="/login" onClick={() => setShowMobileMenu(false)} className='bg-transparent text-black w-full max-w-[100px] py-2 rounded font-semibold border-2 border-black hover:bg-gray-200 transition text-center'>
             Log in
           </Link>
         </div>

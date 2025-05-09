@@ -1,14 +1,13 @@
 import React from 'react';
 import { assets } from '../assets/assets';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Handler for the Learn More button click
   const handleLearnMoreClick = () => {
-    navigate('/about'); // Navigate to the /about route
+    navigate('/about');
   };
 
   return (
@@ -57,9 +56,9 @@ const About = () => {
             We believe in a world where renewable power is accessible, reliable, and affordable for everyone. Our mission is
             to harness the power of the sun to create a cleaner, more sustainable planet for future generations.
           </p>
-          {/* Learn More button */}
+
           <button 
-            onClick={handleLearnMoreClick} // On button click, navigate to /about
+            onClick={handleLearnMoreClick}
             className='bg-blue-800 hover:bg-blue-700 text-white px-8 py-2 rounded'
           >
             Learn More
