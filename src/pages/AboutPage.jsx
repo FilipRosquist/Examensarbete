@@ -84,7 +84,7 @@ const About = () => {
         </div>
 
         <div className='w-full mt-16'>
-          <h2 className='text-xl font-semibold mb-6 text-center'>Our Work & Team</h2>
+          <h2 className='text-2xl sm:text-4xl font-bold mb-2 pt-15 text-center'>Our <span className='underline underline-offset-4 decoration-1 under font-light'>Team</span></h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
             {WorkTeam.map((member) => (
               <div
