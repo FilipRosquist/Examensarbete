@@ -20,6 +20,12 @@ import profile_img_3 from './profile_img_3.png'
 import logoPanEl from './logoPanEl.png'
 import logoSmall from './logoSmall.png'
 import smallIcon from './smallIcon.ico'
+import AboutImage from './AboutImage.jpg'
+import menu from './menu.png'
+import AboutPerson1 from './AboutPerson1.jpg'
+import AboutPerson2 from './AboutPerson2.jpg'
+import AboutPerson3 from './AboutPerson3.jpg'
+
 
 export const assets = {
     logo,
@@ -41,6 +47,12 @@ export const assets = {
     product6,
     left_arrow,
     right_arrow,
+    AboutImage,
+    menu,
+    AboutPerson1,
+    AboutPerson2,
+    AboutPerson3,
+    
 }
 
 export const productsData = [
@@ -103,3 +115,30 @@ export const productsData = [
         text: "Fantastic experience! The installers were punctual and polite, and the system works like a charm. Great value for the quality of service."
     }
 ];
+
+export const WorkTeam = [
+  {
+    id: 1,
+    name: 'Peter Andersson',
+    role: 'CEO',
+    email: 'peter@panel.com',
+    phone: '+46 123 45 56 67',
+    image: AboutPerson1,
+  },
+  {
+    id: 2,
+    name: 'Jessica Larsson',
+    role: 'CFO',
+    email: 'jessica@panel.com',
+    phone: '+46 123 45 56 67',
+    image: AboutPerson2,
+  },
+  {
+    id: 3,
+    name: 'Sara Svensson',
+    role: 'Marketing Director',
+    email: 'sara@panel.com',
+    phone: '+46 123 45 56 67',
+    image: AboutPerson3,
+  },
+]
