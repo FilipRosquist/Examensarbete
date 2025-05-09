@@ -1,6 +1,5 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar2'  // Your Navbar component
 import Footer from '../components/footer'  // Your Footer component
 import { WorkTeam } from '../assets/assets'
@@ -12,14 +11,8 @@ const About = () => {
       <Navbar />
 
       {/* About Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }} 
-        transition={{ duration: 1.5 }} 
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className='flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full overflow-visible pt-16' // Adjust padding-top for navbar
-        id='About'
-      >
+      <div className='flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full overflow-visible pt-16' id='About'>
+
         <h1 className="text-2xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
           About <img src={assets.logoPanEl} alt="Pan-El Logo" className="h-[1em] w-auto" />
         </h1>
@@ -112,7 +105,7 @@ const About = () => {
           </div>
         </div>
 
-      </motion.div>
+      </div>
 
       {/* Footer */}
       <Footer />
