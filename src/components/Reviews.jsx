@@ -16,7 +16,7 @@ const Reviews = () => {
 
       <div className='flex flex-wrap justify-center gap-8'>
         {reviewData.map((review, index)=>(
-            <div key={index} className='max-w-[340px] border shadow-lg rounded px-8 py-12 text-center'>
+            <div key={index} className='max-w-[300px] border shadow-lg rounded px-8 py-12 text-center'>
                 <img className='w-20 h-20 rounded-full mx-auto mb-4' src={review.image} alt={review.alt} />
                 <h2 className='text-xl text-gray-700 font-medium'>{review.name}</h2>
                 <p className='text-gray-500 mb-4 text-sm'>{review.title}</p>
