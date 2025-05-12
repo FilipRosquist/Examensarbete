@@ -105,12 +105,12 @@ const CartPage = () => {
                   >
                     Continue Shopping
                   </Link>
-                  <button
+                  <Link
+                    to="/checkout"
                     className="bg-green-600 text-white py-3 px-8 rounded-full shadow-md hover:bg-green-700 hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300"
-                    onClick={() => alert('Proceed to checkout functionality to be implemented')}
                   >
                     Checkout
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
