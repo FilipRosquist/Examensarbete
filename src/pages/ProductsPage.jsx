@@ -29,6 +29,25 @@ const ProductPage = () => {
   if (error) return <p className="text-red-600 p-6">Error loading product: {error}</p>;
   if (!product) return <p className="p-6">Loading product...</p>;
 
+  // Function to add product to cart
+  const addToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex >= 0) {
+      // If the product is already in the cart, increment its quantity
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Optionally, you can navigate to the Cart Page to view the cart
+    // navigate('/cart');
+  };
+
   return (
     <div>
       {/* Navbar at the top */}
@@ -83,18 +102,13 @@ const ProductPage = () => {
             <div className="p-4 rounded-md mb-6 shadow-sm">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">Product Description</h3>
               <p className="text-sm text-gray-700">{product.description}</p>
-              <p className="mt-4 text-sm text-gray-700">
-                This product is designed to provide the best quality and performance in its category.
-                Whether you're looking for an eco-friendly solution, durable materials, or innovative features,
-                this product delivers exceptional value for your needs.
-              </p>
-              <p className="mt-4 text-sm text-gray-700">
-                It's perfect for those who require high performance and reliability, making it an ideal
-                choice for both professionals and DIY enthusiasts.
-              </p>
             </div>
 
-            <button className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-6">
+            {/* Add to Cart Button */}
+            <button
+              onClick={() => addToCart(product)} // Trigger the add to cart function
+              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-6"
+            >
               Add to Cart
             </button>
           </div>

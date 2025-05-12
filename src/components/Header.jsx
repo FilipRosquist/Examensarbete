@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
 
 const Header = () => {
@@ -22,9 +23,9 @@ const Header = () => {
         >
           <h2 className="text-5xl sm:text-6xl md:text-[82px] inline-block max-w-3xl font-semibold pt-20">Explore the life with Solar Panels</h2>
           <div className="space-x-6 mt-16">
-            <a href="#Products" className="border border-white hover:text-gray-300 hover:border-gray-300 px-8 py-3 rounded">
-              Products
-            </a>
+            <Link to="/products" className="border border-white hover:text-gray-300 hover:border-gray-300 px-8 py-3 rounded">
+            Products 
+            </Link>
             <a href="#Contact" className="bg-blue-800 hover:bg-blue-600 px-8 py-3 roundede">Contact Us</a>
           </div>
         </motion.div>

@@ -1,57 +1,56 @@
-import React from 'react'
-import { assets } from '../assets/assets'
-import Navbar from '../components/Navbar2'  // Your Navbar component
-import Footer from '../components/footer'  // Your Footer component
-import { WorkTeam } from '../assets/assets'
+import React from 'react';
+import { assets } from '../assets/assets';
+import Navbar from '../components/Navbar2'; // Your Navbar component
+import Footer from '../components/Footer'; // Your Footer component
+import { WorkTeam } from '../assets/assets';
 
 const About = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       {/* Navbar */}
       <Navbar />
 
       {/* About Section */}
-      <div className='flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full overflow-visible pt-16' id='About'>
-
+      <div className="flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full flex-grow" id="About">
         <h1 className="text-2xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
           About <img src={assets.logoPanEl} alt="Pan-El Logo" className="h-[1em] w-auto" />
         </h1>
-        <p className='text-gray-500 max-w-80 text-center mb-8'>
+        <p className="text-gray-500 max-w-80 text-center mb-8">
           Passionate About Solar Powered Energy, Dedicated For A Green Future
         </p>
 
-        <div className='flex flex-col md:flex-row md:items-center gap-10 w-full'>
-          <div className='w-full md:w-1/2'>
+        <div className="flex flex-col md:flex-row md:items-center gap-10 w-full">
+          <div className="w-full md:w-1/2">
             <img
               src={assets.AboutImage}
-              className='w-full max-w-2xl rounded-lg shadow-md mx-auto md:mx-0'
+              className="w-full max-w-2xl rounded-lg shadow-md mx-auto md:mx-0"
               alt="About Pan-El"
             />
           </div>
 
-          <div className='w-full md:w-1/2 flex flex-col items-center md:items-start text-gray-600'>
-            <div className='grid grid-cols-2 gap-6 md:gap-10 w-full'>
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-gray-600">
+            <div className="grid grid-cols-2 gap-6 md:gap-10 w-full">
               <div>
-                <p className='text-4xl font-semibold text-gray-800'>10+</p>
+                <p className="text-4xl font-semibold text-gray-800">10+</p>
                 <p>Years of Experience</p>
               </div>
               <div>
-                <p className='text-4xl font-semibold text-gray-800'>150+</p>
+                <p className="text-4xl font-semibold text-gray-800">150+</p>
                 <p>Completed Installations</p>
               </div>
               <div>
-                <p className='text-4xl font-semibold text-gray-800'>5+</p>
+                <p className="text-4xl font-semibold text-gray-800">5+</p>
                 <p>Solar Packages</p>
               </div>
               <div>
-                <p className='text-4xl font-semibold text-gray-800'>25+</p>
+                <p className="text-4xl font-semibold text-gray-800">25+</p>
                 <p>Ongoing Projects</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className='text-gray-700 space-y-6 mt-10 w-full'>
+        <div className="text-gray-700 space-y-6 mt-10 w-full">
           <p>
             <strong>Pan-El</strong> was founded with a clear vision: to revolutionize how people consume and produce energy.
             We believe in a world where renewable power is accessible, reliable, and affordable for everyone. Our mission is
@@ -82,35 +81,12 @@ const About = () => {
             Join us on our journey to light the world with clean, renewable energy. Together, we can make a difference — one rooftop at a time.
           </p>
         </div>
-
-        <div className='w-full mt-16'>
-          <h2 className='text-2xl sm:text-4xl font-bold mb-2 pt-15 text-center'>Our <span className='underline underline-offset-4 decoration-1 under font-light'>Team</span></h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {WorkTeam.map((member) => (
-              <div
-                key={member.id}
-                className="w-full h-auto bg-white text-center rounded-lg shadow-md p-4"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-80 rounded-md mb-4"
-                />
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="text-sm text-gray-600">{member.role}</p>
-                <p className="text-sm text-gray-500">{member.email}</p>
-                <p className="text-sm text-gray-500">{member.phone}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
 
       {/* Footer */}
       <Footer />
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default About
+export default About;

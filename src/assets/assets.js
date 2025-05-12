@@ -47,40 +47,6 @@ export const assets = {
 
 
 
-// export const productsData = [
-//     {
-//       title: "Water Powered Brush",
-//       price: "$69.99",
-//       image: product1
-//     },
-//     {
-//       title: "Installation Tool",
-//       price: "$49.00",
-//       image: product2
-//     },
-//     {
-//       title: "Solar Powered Brush",
-//       price: "$299.00",
-//       image: product3
-//     },
-//     {
-//       title: "Cleaning Kit",
-//       price: "$79.99",
-//       image: product4
-//     },
-//     {
-//       title: "Suction Cup",
-//       price: "$99.99",
-//       image: product5
-//     },
-//     {
-//       title: "Solar Tool Roller",
-//       price: "$149.99",
-//       image: product6
-//     },
-    
-//   ];
-
   export const reviewData = [
     {
         name: "Michael Nelson",
@@ -108,29 +74,3 @@ export const assets = {
     }
 ];
 
-export const WorkTeam = [
-  {
-    id: 1,
-    name: 'Peter Andersson',
-    role: 'CEO',
-    email: 'peter@panel.com',
-    phone: '+46 123 45 56 67',
-    image: AboutPerson1,
-  },
-  {
-    id: 2,
-    name: 'Jessica Larsson',
-    role: 'CFO',
-    email: 'jessica@panel.com',
-    phone: '+46 123 45 56 67',
-    image: AboutPerson2,
-  },
-  {
-    id: 3,
-    name: 'Sara Svensson',
-    role: 'Marketing Director',
-    email: 'sara@panel.com',
-    phone: '+46 123 45 56 67',
-    image: AboutPerson3,
-  },
-]

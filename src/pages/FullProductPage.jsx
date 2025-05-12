@@ -56,10 +56,10 @@ const FullProductPage = () => {
   if (error) return <div className="text-center text-red-600 py-10">Error: {error}</div>;
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 flex-grow">
         <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
 
         {/* Search and Filter Controls */}
@@ -91,24 +91,24 @@ const FullProductPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {displayedProducts.map((product) => (
                 <div
-                key={product.id}
-                className="group bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
-              >
-                <Link to={`/product/${product.id}`}>
-                  <div className="w-full h-48 sm:h-60 md:h-72 relative">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-contain transition duration-300 group-hover:scale-105"
-                    />
-                  </div>
+                  key={product.id}
+                  className="group bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
+                >
+                  <Link to={`/product/${product.id}`}>
+                    <div className="w-full h-48 sm:h-60 md:h-72 relative">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-contain transition duration-300 group-hover:scale-105"
+                      />
+                    </div>
 
-                  <div className="p-4">
-                    <h2 className="text-lg sm:text-xl font-semibold mb-2">{product.title}</h2>
-                    <p className="text-md sm:text-lg text-gray-600 mb-2">${product.price}</p>
-                  </div>
-                </Link>
-              </div>
+                    <div className="p-4">
+                      <h2 className="text-lg sm:text-xl font-semibold mb-2">{product.title}</h2>
+                      <p className="text-md sm:text-lg text-gray-600 mb-2">${product.price}</p>
+                    </div>
+                  </Link>
+                </div>
               ))}
             </div>
           )}
