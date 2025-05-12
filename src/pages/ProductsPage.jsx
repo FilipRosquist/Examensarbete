@@ -4,6 +4,8 @@ import starIcon from '../assets/star_icon.svg';
 import Navbar from '../components/Navbar2'; // Adjust the path to your Navbar component
 import Footer from '../components/Footer'; // Adjust the path to your Footer component
 import backIcon from '../assets/back.png'; // Import the back image
+import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import the Toastify CSS
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -44,8 +46,16 @@ const ProductPage = () => {
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Optionally, you can navigate to the Cart Page to view the cart
-    // navigate('/cart');
+    // Show Toastify notification
+    toast.success('Product added to cart!', {
+      position: "top-right",
+      autoClose: 2000, // Auto close after 2 seconds
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -105,10 +115,11 @@ const ProductPage = () => {
             </div>
 
             {/* Add to Cart Button */}
-            <button onClick={() => addToCart(product)} className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300">
+            <button 
+              onClick={() => addToCart(product)} 
+              className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300">
               Add to Cart 
-              </button>
-
+            </button>
           </div>
         </div>
 
@@ -144,6 +155,9 @@ const ProductPage = () => {
 
       {/* Footer at the bottom */}
       <Footer />
+
+      {/* Toastify Notification */}
+      <ToastContainer />
     </div>
   );
 };
