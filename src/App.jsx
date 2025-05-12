@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ProductsPage from './pages/ProductsPage'
+import FullProductPage from './pages/FullProductPage'
 import ContactPage from './pages/ContactPage'
 import ScrollToTop from './components/ScrollToTop' // <-- adjust path if needed
 
@@ -15,7 +16,7 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products" element={<FullProductPage />} />
           <Route path="/product/:id" element={<ProductsPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
