@@ -49,11 +49,11 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       {/* Navbar at the top */}
       <Navbar />
 
-      <div className="max-w-5xl mx-auto p-6 rounded-lg">
+      <div className="max-w-5xl mx-auto p-6 rounded-lg flex-grow">
         {/* Back Button */}
         <button
           onClick={() => navigate('/products')} // Navigates to the products page
@@ -105,12 +105,10 @@ const ProductPage = () => {
             </div>
 
             {/* Add to Cart Button */}
-            <button
-              onClick={() => addToCart(product)} // Trigger the add to cart function
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-6"
-            >
-              Add to Cart
-            </button>
+            <button onClick={() => addToCart(product)} className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300">
+              Add to Cart 
+              </button>
+
           </div>
         </div>
 

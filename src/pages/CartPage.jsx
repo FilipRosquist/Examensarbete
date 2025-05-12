@@ -71,21 +71,21 @@ const CartPage = () => {
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         disabled={item.quantity <= 1}
-                        className="px-2 py-1 bg-gray-300 rounded-full"
+                        className="px-3 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300 ease-in-out"
                       >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="px-2 py-1 bg-gray-300 rounded-full"
+                        className="px-3 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300 ease-in-out"
                       >
                         +
                       </button>
                       <span className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</span> {/* Format quantity price */}
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="text-red-600 hover:text-red-800"
+                        className="text-red-600 hover:text-red-800 transition duration-300 ease-in-out"
                       >
                         Remove
                       </button>
@@ -101,12 +101,12 @@ const CartPage = () => {
                 <div className="flex space-x-4">
                   <Link
                     to="/products"
-                    className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700"
+                    className="bg-blue-600 text-white py-3 px-8 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300"
                   >
                     Continue Shopping
                   </Link>
                   <button
-                    className="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700"
+                    className="bg-green-600 text-white py-3 px-8 rounded-full shadow-md hover:bg-green-700 hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-300"
                     onClick={() => alert('Proceed to checkout functionality to be implemented')}
                   >
                     Checkout

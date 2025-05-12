@@ -55,6 +55,22 @@ const FullProductPage = () => {
   if (loading) return <div className="text-center py-10">Loading products...</div>;
   if (error) return <div className="text-center text-red-600 py-10">Error: {error}</div>;
 
+  // Function to add product to cart
+  const addToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex >= 0) {
+      // If the product is already in the cart, increment its quantity
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // If the product is not in the cart, add it with quantity 1
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -108,6 +124,14 @@ const FullProductPage = () => {
                       <p className="text-md sm:text-lg text-gray-600 mb-2">${product.price}</p>
                     </div>
                   </Link>
+
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 mx-4 mb-4"
+                  >
+                    Add
+                  </button>
                 </div>
               ))}
             </div>

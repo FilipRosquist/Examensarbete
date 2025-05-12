@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // ✅ import useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // ✅ import useNavigate
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -124,7 +124,7 @@ const Products = () => {
                     ))}
                 </div>
                 <button className='bg-blue-800 hover:bg-blue-700 text-white mt-10 px-8 py-2 rounded block mx-auto'>
-                    More Products
+                    <Link to="/products" className="w-full h-full inline-block">More Products</Link>
                 </button>
             </div>
         </motion.div>
