@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
-import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar2'; // Adjust path as necessary
 import Footer from '../components/Footer'; // Adjust path as necessary
 
@@ -14,7 +13,7 @@ const ContactPage = () => {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/team');
+        const response = await fetch('http://localhost:3000/api/team'); // Your API endpoint to fetch team data
         if (!response.ok) {
           throw new Error('Failed to fetch team data');
         }
@@ -65,13 +64,7 @@ const ContactPage = () => {
     <div>
       <Navbar />
 
-      <motion.div 
-        initial={{ opacity: 0, x: -200 }} 
-        transition={{ duration: 1 }} 
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className='text-center p-6 py-20 lg:px-32 w-full overflow-hidden' id='Contact'
-      >
+      <div className='text-center p-6 py-20 lg:px-32 w-full overflow-hidden' id='Contact'>
         <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
           Contact <span className='underline underline-offset-4 decoration-1 font-light'>Us!</span>
         </h1>
@@ -83,33 +76,33 @@ const ContactPage = () => {
           <div className='flex flex-wrap'>
             <div className='w-full md:w-1/2 text-left'>
               Your Name
-              <input 
-                className='w-full border border-gray-300 rounded py-3 px-4 mt-2' 
-                type="text" 
-                name='Name' 
-                placeholder='Your Name' 
-                required 
+              <input
+                className='w-full border border-gray-300 rounded py-3 px-4 mt-2'
+                type="text"
+                name='Name'
+                placeholder='Your Name'
+                required
               />
             </div>
 
             <div className='w-full md:w-1/2 text-left md:pl-4'>
               Your Email
-              <input 
-                className='w-full border border-gray-300 rounded py-3 px-4 mt-2' 
-                type="email" 
-                name='Email' 
-                placeholder='Your Email' 
-                required 
+              <input
+                className='w-full border border-gray-300 rounded py-3 px-4 mt-2'
+                type="email"
+                name='Email'
+                placeholder='Your Email'
+                required
               />
             </div>
           </div>
 
           <div className='my-6 text-left'>
             Message
-            <textarea 
-              className='w-full border border-gray-300 rounded py-3 px-4 mt-2 h-48 resize-none' 
-              name="Message" 
-              placeholder='Your Message' 
+            <textarea
+              className='w-full border border-gray-300 rounded py-3 px-4 mt-2 h-48 resize-none'
+              name="Message"
+              placeholder='Your Message'
               required
             ></textarea>
           </div>
@@ -147,9 +140,8 @@ const ContactPage = () => {
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer */}
       <Footer />
 
       {/* Toast Container to display toasts */}
