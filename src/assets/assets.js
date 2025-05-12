@@ -17,9 +17,6 @@ import logoSmall from './logoSmall.png'
 import smallIcon from './smallIcon.ico'
 import AboutImage from './AboutImage.jpg'
 import menu from './menu.png'
-import AboutPerson1 from './AboutPerson1.jpg'
-import AboutPerson2 from './AboutPerson2.jpg'
-import AboutPerson3 from './AboutPerson3.jpg'
 
 
 export const assets = {
@@ -38,9 +35,6 @@ export const assets = {
     right_arrow,
     AboutImage,
     menu,
-    AboutPerson1,
-    AboutPerson2,
-    AboutPerson3,
     cart_black
     
 }

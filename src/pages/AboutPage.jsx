@@ -2,7 +2,6 @@ import React from 'react';
 import { assets } from '../assets/assets';
 import Navbar from '../components/Navbar2'; // Your Navbar component
 import Footer from '../components/Footer'; // Your Footer component
-import { WorkTeam } from '../assets/assets';
 
 const About = () => {
   return (
