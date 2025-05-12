@@ -55,39 +55,41 @@ export const assets = {
     
 }
 
-export const productsData = [
-    {
-      title: "Water Powered Brush",
-      price: "$69.99",
-      image: product1
-    },
-    {
-      title: "Installation Tool",
-      price: "$49.00",
-      image: product2
-    },
-    {
-      title: "Solar Powered Brush",
-      price: "$299.00",
-      image: product3
-    },
-    {
-      title: "Cleaning Kit",
-      price: "$79.99",
-      image: product4
-    },
-    {
-      title: "Suction Cup",
-      price: "$99.99",
-      image: product5
-    },
-    {
-      title: "Solar Tool Roller",
-      price: "$149.99",
-      image: product6
-    },
+
+
+// export const productsData = [
+//     {
+//       title: "Water Powered Brush",
+//       price: "$69.99",
+//       image: product1
+//     },
+//     {
+//       title: "Installation Tool",
+//       price: "$49.00",
+//       image: product2
+//     },
+//     {
+//       title: "Solar Powered Brush",
+//       price: "$299.00",
+//       image: product3
+//     },
+//     {
+//       title: "Cleaning Kit",
+//       price: "$79.99",
+//       image: product4
+//     },
+//     {
+//       title: "Suction Cup",
+//       price: "$99.99",
+//       image: product5
+//     },
+//     {
+//       title: "Solar Tool Roller",
+//       price: "$149.99",
+//       image: product6
+//     },
     
-  ];
+//   ];
 
   export const reviewData = [
     {
