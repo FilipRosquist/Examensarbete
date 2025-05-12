@@ -27,14 +27,16 @@ const Navbar = () => {
               <Link to="/about" className='hover:text-gray-300 transition'>About</Link>
               <Link to="/products" className='hover:text-gray-300 transition'>Products</Link>
               <Link to="/contact" className='hover:text-gray-300 transition'>Contact</Link>
+              <Link to="/cart" className='hover:bg-gray-300 rounded-full transition'><img src={assets.cart_black} alt="Cart" className="w-6 h-6" /></Link>
             </ul>
+            
           </div>
 
           {/* Mobile Menu Icon */}
           <div>
             <img
               onClick={() => setShowMobileMenu(true)}
-              src={assets.menu_icon}
+              src={assets.menu}
               className='md:hidden w-7 cursor-pointer'
               alt="menu"
             />
@@ -43,9 +45,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`md:hidden fixed top-0 right-0 bottom-0 bg-white z-30 transition-all duration-300 ${
-          showMobileMenu ? 'w-full' : 'w-0 overflow-hidden'
-        }`}
+        className={`md:hidden fixed top-0 right-0 bottom-0 bg-white z-30 transition-all duration-300 ${showMobileMenu ? 'w-full' : 'w-0 overflow-hidden'}`}
       >
         <div className='flex justify-end p-6'>
           <img
@@ -85,7 +85,7 @@ const Navbar = () => {
             >
                 Contact
             </Link>
-            </ul>
+        </ul>
       </div>
     </div>
   )

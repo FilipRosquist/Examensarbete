@@ -5,7 +5,7 @@ import Products from '../components/Products'
 import Reviews from '../components/Reviews'
 import Contact from '../components/Contact'
 import { ToastContainer } from 'react-toastify';
-import Footer from '../components/footer'
+import Footer from '../components/Footer'
 
 const HomePage = () => {
   return (

@@ -6,6 +6,7 @@ import ProductsPage from './pages/ProductsPage'
 import FullProductPage from './pages/FullProductPage'
 import ContactPage from './pages/ContactPage'
 import ScrollToTop from './components/ScrollToTop' // <-- adjust path if needed
+import CartPage from './pages/CartPage'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/products" element={<FullProductPage />} />
           <Route path="/product/:id" element={<ProductsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
     </div>

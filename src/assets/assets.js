@@ -8,12 +8,7 @@ import right_arrow from './right_arrow.svg'
 import header_img from '/header_img.png'
 import header from '/header.jpg'
 import brand_img from './brand_img.png'
-import product1 from './product1.png'
-import product2 from './product2.png'
-import product3 from './product3.png'
-import product4 from './product4.png'
-import product5 from './product5.png'
-import product6 from './product6.png'
+import cart_black from './cart_black.png'
 import profile_img_1 from './profile_img_1.png'
 import profile_img_2 from './profile_img_2.png'
 import profile_img_3 from './profile_img_3.png'
@@ -39,12 +34,6 @@ export const assets = {
     header_img,
     header,
     brand_img,
-    product1,
-    product2,
-    product3,
-    product4,
-    product5,
-    product6,
     left_arrow,
     right_arrow,
     AboutImage,
@@ -52,6 +41,7 @@ export const assets = {
     AboutPerson1,
     AboutPerson2,
     AboutPerson3,
+    cart_black
     
 }
 

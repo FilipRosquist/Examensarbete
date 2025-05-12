@@ -34,7 +34,7 @@ const ProductPage = () => {
       {/* Navbar at the top */}
       <Navbar />
 
-      <div className="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <div className="max-w-5xl mx-auto p-6 rounded-lg">
         {/* Back Button */}
         <button
           onClick={() => navigate('/products')} // Navigates to the products page
@@ -52,7 +52,7 @@ const ProductPage = () => {
           <img
             src={product.image}
             alt={product.title}
-            className="w-full md:w-1/2 h-auto object-contain rounded-md border"
+            className="w-full md:w-1/2 h-auto rounded-md border"
           />
 
           <div className="md:w-1/2">
@@ -67,7 +67,7 @@ const ProductPage = () => {
             <p className="text-2xl text-blue-700 font-semibold mb-6">${product.price}</p>
 
             {/* Shipping and Other Details */}
-            <div className="bg-gray-50 p-4 rounded-md mb-6 shadow-sm">
+            <div className="p-4 rounded-md mb-6 shadow-sm">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">Shipping & Returns</h3>
               <ul className="list-disc pl-5 space-y-1 text-sm">
                 <li>Free shipping on orders over $50</li>
@@ -80,7 +80,7 @@ const ProductPage = () => {
             </div>
 
             {/* Description */}
-            <div className="bg-gray-50 p-4 rounded-md mb-6 shadow-sm">
+            <div className="p-4 rounded-md mb-6 shadow-sm">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">Product Description</h3>
               <p className="text-sm text-gray-700">{product.description}</p>
               <p className="mt-4 text-sm text-gray-700">
