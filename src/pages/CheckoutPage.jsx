@@ -1,4 +1,3 @@
-// src/pages/CheckoutPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
@@ -25,33 +24,49 @@ const CheckoutPage = () => {
   };
 
   const makePayment = async () => {
-    const stripe = await loadStripe("pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED");
+    try {
+      const stripe = await loadStripe("pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED");
 
-    const body = {
-      products: cartItems.map(item => ({
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        quantity: item.quantity,
-        image: `http://localhost:3000/images/${item.image}`
-      }))
-    };
+      const body = {
+        products: cartItems
+          .filter(item => item.id && item.quantity > 0)
+          .map(item => ({
+            id: Number(item.id),
+            quantity: item.quantity
+            }))
+      };
 
-    const response = await fetch("http://localhost:3000/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    });
+      const response = await fetch("http://localhost:3000/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      });
 
-    const session = await response.json();
-    const result = await stripe.redirectToCheckout({ sessionId: session.id });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to create Stripe session");
+      }
 
-    if (result.error) {
-      console.error(result.error.message);
+      const session = await response.json();
+
+      if (!session.id) {
+        throw new Error("No session ID returned from backend");
+      }
+
+      const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+      if (result.error) {
+        console.error("Stripe redirect error:", result.error.message);
+        alert("Payment failed: " + result.error.message);
+      }
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+      alert("There was an issue with checkout. Please try again.");
     }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -67,7 +82,8 @@ const CheckoutPage = () => {
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex items-center justify-between p-4 border-b">
                     <img
-                      src={`http://localhost:3000/images/${item.image}`}
+                      src={item.image} // Use full image URL from backend
+                      alt={item.title}
                       className="w-32 h-32 object-contain rounded-md"
                     />
                     <div className="flex-1 ml-4">
