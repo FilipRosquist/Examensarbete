@@ -112,34 +112,39 @@ const ContactPage = () => {
           </button>
         </form>
 
-        {/* Team Section */}
-        <div className="w-full mt-16">
-          <h2 className="text-2xl sm:text-4xl font-bold mb-2 pt-15 text-center">
-            Our <span className="underline underline-offset-4 decoration-1 font-light">Team</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {workTeam.length > 0 ? (
-              workTeam.map((member) => (
-                <div
-                  key={member.id}
-                  className="w-full h-auto bg-white text-center rounded-lg shadow-md p-4"
-                >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-80 rounded-md mb-4"
-                  />
-                  <h3 className="text-lg font-semibold">{member.name}</h3>
-                  <p className="text-sm text-gray-600">{member.role}</p>
-                  <p className="text-sm text-gray-500">{member.email}</p>
-                  <p className="text-sm text-gray-500">{member.phone}</p>
-                </div>
-              ))
-            ) : (
-              <p className="text-center text-gray-500">No team members available.</p>
-            )}
-          </div>
-        </div>
+    <div className="w-full mt-16 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-2xl sm:text-4xl font-bold mb-6 text-center">
+        Our <span className="underline underline-offset-4 decoration-1 font-light">Team</span>
+      </h2>
+      <div className="flex justify-center gap-6">
+        {workTeam.length > 0 ? (
+          workTeam.map((member) => (
+            <div
+              key={member.id}
+              className="w-72 h-96 bg-white text-center rounded-lg shadow-lg p-6 flex flex-col items-center"
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-40 h-40 mx-auto rounded-full mb-4 object-cover"
+              />
+              <h3 className="text-lg font-semibold">{member.name}</h3>
+              <p className="text-sm text-gray-600">{member.role}</p>
+              <p className="text-sm text-gray-500">{member.email}</p>
+              <p className="text-sm text-gray-500">{member.phone}</p>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500">No team members available.</p>
+        )}
+      </div>
+    </div>
+
+
+
+
+
+
       </div>
 
       <Footer />
