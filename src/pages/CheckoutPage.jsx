@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
 import Footer from '../components/Footer';
@@ -7,12 +6,6 @@ import Footer from '../components/Footer';
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
-
-  const stripe = useStripe();
-  const elements = useElements();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,52 +19,14 @@ const CheckoutPage = () => {
 
   const calculateTotalPrice = (items) => {
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    setTotalPrice((total * 100).toFixed(0)); // In cents for Stripe
+    setTotalPrice(total.toFixed(2)); // No need for cents (Stripe-specific)
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!stripe || !elements) {
-      setError('Stripe is not ready.');
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch('http://localhost:3000/create-payment-intent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: parseInt(totalPrice) }),
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Payment intent creation failed');
-      }
-
-      const result = await stripe.confirmCardPayment(data.clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      });
-
-      if (result.error) {
-        setError(result.error.message);
-      } else if (result.paymentIntent.status === 'succeeded') {
-        setPaymentSuccess(true);
-        localStorage.removeItem('cart');
-        setCartItems([]);
-        alert('Payment successful! Thank you for your order.');
-        navigate('/'); // Redirect to homepage or success page
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message || 'Payment failed, please try again.');
-    } finally {
-      setLoading(false);
-    }
+  const handleCheckout = () => {
+    alert('Checkout complete! Thank you for your order.');
+    localStorage.removeItem('cart');
+    setCartItems([]);
+    navigate('/');
   };
 
   return (
@@ -107,22 +62,17 @@ const CheckoutPage = () => {
               </div>
 
               <div className="mt-6 flex justify-between items-center">
-                <h2 className="text-2xl font-semibold">Total: ${(totalPrice / 100).toFixed(2)}</h2>
+                <h2 className="text-2xl font-semibold">Total: ${totalPrice}</h2>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-6">
-                <div className="mb-4 border p-4 rounded-md">
-                  <CardElement />
-                </div>
-                {error && <div className="text-red-600 mb-4">{error}</div>}
+              <div className="mt-6 text-center">
                 <button
-                  type="submit"
+                  onClick={handleCheckout}
                   className="bg-green-600 text-white py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300"
-                  disabled={!stripe || loading}
                 >
-                  {loading ? 'Processing...' : 'Pay Now'}
+                  Complete Order
                 </button>
-              </form>
+              </div>
             </>
           )}
         </div>
