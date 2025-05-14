@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
 import Footer from '../components/Footer';
+import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 
 const FullProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -69,6 +71,17 @@ const FullProductPage = () => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Show Toastify notification
+    toast.success('Product added to cart!', {
+      position: "top-right",
+      autoClose: 2000, // Auto close after 2 seconds
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -140,6 +153,9 @@ const FullProductPage = () => {
       </div>
 
       <Footer />
+
+      {/* Toastify Notification */}
+      <ToastContainer />
     </div>
   );
 };

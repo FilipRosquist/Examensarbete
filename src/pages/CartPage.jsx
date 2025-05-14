@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar2'; // Ensure this path is correct
 import Footer from '../components/Footer'; // Ensure this path is correct
+import backIcon from '../assets/back.png'; // Make sure you have the back.png image in your assets folder
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   // Load cart items from localStorage
   useEffect(() => {
@@ -42,6 +44,21 @@ const CartPage = () => {
     <div className="min-h-screen flex flex-col">
       {/* Navbar */}
       <Navbar />
+
+      {/* Back Button */}
+      <div className="lg:col-span-3 bg-gray-100 pt-10 pl-[80px] text-left">
+        <button
+          onClick={() => navigate('/products')}
+          className="mb-6 flex items-center hover:underline"
+        >
+          <img
+            src={backIcon} // Use the back.png image from your assets
+            alt="Back"
+            className="w-6 h-6 mr-2" // Adjust size of the back icon
+          />
+          Back to Products
+        </button>
+      </div>
 
       <div className="flex-grow flex justify-center items-center bg-gray-100 p-6">
         <div className="max-w-4xl w-full bg-white shadow-lg rounded-lg p-6">
