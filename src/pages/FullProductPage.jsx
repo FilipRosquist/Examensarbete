@@ -12,16 +12,14 @@ const FullProductPage = () => {
   const [error, setError] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [priceFilter, setPriceFilter] = useState('all'); // 'all', 'under100', 'over100'
-  const [sortOption, setSortOption] = useState('default'); // 'default', 'az', 'za'
+  const [priceFilter, setPriceFilter] = useState('all');
+  const [sortOption, setSortOption] = useState('default');
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('http://localhost:3000/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
+        if (!response.ok) throw new Error('Failed to fetch products');
         const data = await response.json();
         setProducts(data);
         setDisplayedProducts(data);
@@ -38,21 +36,18 @@ const FullProductPage = () => {
   useEffect(() => {
     let filtered = [...products];
 
-    // Filter by search query
     if (searchQuery) {
       filtered = filtered.filter((product) =>
         product.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
-    // Filter by price
     if (priceFilter === 'under100') {
       filtered = filtered.filter((product) => product.price < 100);
     } else if (priceFilter === 'over100') {
       filtered = filtered.filter((product) => product.price >= 100);
     }
 
-    // Sort according to selected option
     if (sortOption === 'az') {
       filtered.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortOption === 'za') {
@@ -84,7 +79,6 @@ const FullProductPage = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
@@ -107,13 +101,13 @@ const FullProductPage = () => {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-300 rounded px-4 py-2 max-w-xs"
+            className="border border-gray-300 rounded px-4 py-2 w-full md:w-auto"
           />
 
           <select
             value={priceFilter}
             onChange={(e) => setPriceFilter(e.target.value)}
-            className="border border-gray-300 rounded px-4 py-2 w-44"
+            className="border border-gray-300 rounded px-4 py-2 w-full md:w-44"
           >
             <option value="all">All Prices</option>
             <option value="under100">Under $100</option>
@@ -123,7 +117,7 @@ const FullProductPage = () => {
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
-            className="border border-gray-300 rounded px-4 py-2 w-44"
+            className="border border-gray-300 rounded px-4 py-2 w-full md:w-44"
           >
             <option value="default">Default Sort</option>
             <option value="az">Sort A - Z</option>
@@ -171,7 +165,6 @@ const FullProductPage = () => {
       </div>
 
       <Footer />
-
       <ToastContainer />
     </div>
   );

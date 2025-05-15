@@ -57,12 +57,10 @@ const About = () => {
             to harness the power of the sun to create a cleaner, more sustainable planet for future generations.
           </p>
 
-          <button 
-            onClick={handleLearnMoreClick}
-            className='bg-blue-800 hover:bg-blue-700 text-white px-8 py-2 rounded'
-          >
-            Learn More
+          <button onClick={handleLearnMoreClick} className="bg-white text-blue-600 border-2 border-blue-600 px-8 py-2 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300">
+          Learn More
           </button>
+
         </div>
       </div>
     </motion.div>

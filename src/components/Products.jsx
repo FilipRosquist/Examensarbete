@@ -113,7 +113,8 @@ const Products = () => {
                                                 e.stopPropagation(); // ✅ Prevents parent click
                                                 handleAddToCart(product);
                                             }}
-                                            className='bg-blue-800 text-white px-3 py-1 rounded hover:bg-blue-500 transition'
+                                            className="bg-white text-blue-600 border border-blue-600 py-1.5 px-4 text-sm rounded-full shadow-sm hover:bg-blue-600 hover:text-white hover:shadow-md transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-blue-300 mx-2 mb-3"
+
                                         >
                                             Add
                                         </button>
@@ -123,9 +124,13 @@ const Products = () => {
                         </div>
                     ))}
                 </div>
-                <button className='bg-blue-800 hover:bg-blue-700 text-white mt-10 px-8 py-2 rounded block mx-auto'>
-                    <Link to="/products" className="w-full h-full inline-block">More Products</Link>
+                <button className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-10 text-lg rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 mx-auto mt-10 block">
+                    <Link to="/products" className="inline-block w-full h-full text-center">
+                        More Products
+                    </Link>
                 </button>
+
+
             </div>
         </motion.div>
     );

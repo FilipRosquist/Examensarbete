@@ -19,7 +19,9 @@ const Navbar = () => {
           
           {/* Logo Container */}
           <div className='flex-shrink-0'>
-            <img src={assets.logoPanEl} alt="logo" className='h-12 w-auto' />
+            <Link to="/home">
+              <img src={assets.logoPanEl} alt="logo" className='h-12 w-auto' />
+            </Link>
           </div>
 
           {/* Navigation Container (with negative margin to move the buttons left) */}

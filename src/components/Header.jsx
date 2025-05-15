@@ -22,12 +22,22 @@ const Header = () => {
           className="flex flex-col items-center justify-center text-center min-h-screen px-6 text-white"
         >
           <h2 className="text-5xl sm:text-6xl md:text-[82px] inline-block max-w-3xl font-semibold pt-20">Explore the life with Solar Panels</h2>
-          <div className="space-x-6 mt-16">
-            <Link to="/products" className="border border-white hover:text-gray-300 hover:border-gray-300 px-8 py-3 rounded">
-            Products 
-            </Link>
-            <a href="#Contact" className="bg-blue-800 hover:bg-blue-600 px-8 py-3 roundede">Contact Us</a>
-          </div>
+          <div className="space-x-6 mt-16 flex justify-center">
+          <Link
+            to="/products"
+            className="text-white border-2 border-white px-8 py-3 rounded-full shadow-md hover:text-gray-300 hover:border-gray-300 hover:shadow-lg transition-all duration-300 ease-in-out"
+          >
+            Products
+          </Link>
+          <a
+            href="#Contact"
+            className="bg-blue-600 text-white border-2 border-blue-600 px-8 py-3 rounded-full shadow-md hover:bg-blue-700 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out"
+          >
+            Contact Us
+          </a>
+        </div>
+
+
         </motion.div>
       </AnimatePresence>
     </div>

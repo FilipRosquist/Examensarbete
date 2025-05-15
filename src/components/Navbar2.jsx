@@ -17,7 +17,9 @@ const Navbar = () => {
           
           {/* Logo Container */}
           <div className='flex-shrink-0'>
-            <img src={assets.logoPanEl} alt="logo" className='h-12 w-auto' />
+            <Link to="/home">
+              <img src={assets.logoPanEl} alt="logo" className='h-12 w-auto' />
+            </Link>
           </div>
 
           {/* Navigation Container (with negative margin to move the buttons left) */}
@@ -84,6 +86,14 @@ const Navbar = () => {
                 className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center'
             >
                 Contact
+            </Link>
+            <Link
+                to="/cart"
+                onClick={() => setShowMobileMenu(false)}
+                className='hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center flex items-center justify-center gap-2'
+            >
+            <img src={assets.cart_black} alt="Cart" className="w-5 h-5" />
+            Cart
             </Link>
         </ul>
       </div>
