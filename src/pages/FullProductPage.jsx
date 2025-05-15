@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
 import Footer from '../components/Footer';
-import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FullProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +13,7 @@ const FullProductPage = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [priceFilter, setPriceFilter] = useState('all'); // 'all', 'under100', 'over100'
+  const [sortOption, setSortOption] = useState('default'); // 'default', 'az', 'za'
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -51,31 +52,34 @@ const FullProductPage = () => {
       filtered = filtered.filter((product) => product.price >= 100);
     }
 
+    // Sort according to selected option
+    if (sortOption === 'az') {
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOption === 'za') {
+      filtered.sort((a, b) => b.title.localeCompare(a.title));
+    }
+
     setDisplayedProducts(filtered);
-  }, [searchQuery, priceFilter, products]);
+  }, [searchQuery, priceFilter, sortOption, products]);
 
   if (loading) return <div className="text-center py-10">Loading products...</div>;
   if (error) return <div className="text-center text-red-600 py-10">Error: {error}</div>;
 
-  // Function to add product to cart
   const addToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
     if (existingProductIndex >= 0) {
-      // If the product is already in the cart, increment its quantity
       cart[existingProductIndex].quantity += 1;
     } else {
-      // If the product is not in the cart, add it with quantity 1
       cart.push({ ...product, quantity: 1 });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Show Toastify notification
     toast.success('Product added to cart!', {
       position: "top-right",
-      autoClose: 2000, // Auto close after 2 seconds
+      autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -89,10 +93,15 @@ const FullProductPage = () => {
       <Navbar />
 
       <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 flex-grow">
-        <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
+        <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
+          Our{' '}
+          <span className='underline underline-offset-4 decoration-1 font-light'>
+            Products
+          </span>
+        </h1>
 
-        {/* Search and Filter Controls */}
-        <div className="max-w-[1200px] mx-auto mb-6 flex flex-col md:flex-row md:items-center md:justify-end gap-4">
+        {/* Search, Filter, and Sort Controls */}
+        <div className="max-w-[1200px] mx-auto mb-6 mt-20 flex flex-col md:flex-row md:items-center md:justify-end gap-4">
           <input
             type="text"
             placeholder="Search products..."
@@ -109,6 +118,16 @@ const FullProductPage = () => {
             <option value="all">All Prices</option>
             <option value="under100">Under $100</option>
             <option value="over100">$100 & Above</option>
+          </select>
+
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="border border-gray-300 rounded px-4 py-2 w-44"
+          >
+            <option value="default">Default Sort</option>
+            <option value="az">Sort A - Z</option>
+            <option value="za">Sort Z - A</option>
           </select>
         </div>
 
@@ -138,7 +157,6 @@ const FullProductPage = () => {
                     </div>
                   </Link>
 
-                  {/* Add to Cart Button */}
                   <button
                     onClick={() => addToCart(product)}
                     className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 mx-4 mb-4"
@@ -154,7 +172,6 @@ const FullProductPage = () => {
 
       <Footer />
 
-      {/* Toastify Notification */}
       <ToastContainer />
     </div>
   );
