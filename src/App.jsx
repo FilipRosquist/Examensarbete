@@ -12,8 +12,7 @@ import ScrollToTop from './components/ScrollToTop'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 
-// ✅ Replace this with your actual Stripe test publishable key
-const stripePromise = loadStripe('pk_test_YourPublishableKeyHere')
+const stripePromise = loadStripe('pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED')
 
 const App = () => {
   return (
@@ -28,16 +27,8 @@ const App = () => {
           <Route path="/product/:id" element={<ProductsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<CartPage />} />
-          
-          {/* ✅ Wrap checkout page with Stripe Elements */}
-          <Route
-            path="/checkout"
-            element={
-              <Elements stripe={stripePromise}>
-                <CheckoutPage />
-              </Elements>
-            }
-          />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/checkout" element={<Elements stripe={stripePromise}><CheckoutPage /></Elements>}/>
         </Routes>
       </Router>
     </div>
