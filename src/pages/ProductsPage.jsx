@@ -1,17 +1,64 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import starIcon from '../assets/star_icon.svg';
-import Navbar from '../components/Navbar2'; // Adjust the path to your Navbar component
-import Footer from '../components/Footer'; // Adjust the path to your Footer component
-import backIcon from '../assets/back.png'; // Import the back image
-import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import the Toastify CSS
+import Navbar from '../components/Navbar2';
+import Footer from '../components/Footer';
+import backIcon from '../assets/back.png';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Custom ImageMagnifier component
+const ImageMagnifier = ({ src, width, height, zoomLevel = 2 }) => {
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [magnifierPosition, setMagnifierPosition] = useState({ x: 0, y: 0 });
+  const imgRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const { top, left } = imgRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+    setMagnifierPosition({ x, y });
+  };
+
+  return (
+    <div
+      className="relative border rounded-md overflow-hidden"
+      style={{ width, height }}
+      onMouseEnter={() => setShowMagnifier(true)}
+      onMouseLeave={() => setShowMagnifier(false)}
+      onMouseMove={handleMouseMove}
+    >
+      <img
+        ref={imgRef}
+        src={src}
+        alt="Zoom"
+        className="w-full h-full object-contain" // <-- Changed here!
+      />
+      {showMagnifier && (
+        <div
+          className="absolute pointer-events-none border-2 border-gray-300 rounded-full"
+          style={{
+            top: `${magnifierPosition.y - 50}px`,
+            left: `${magnifierPosition.x - 50}px`,
+            width: '200px',
+            height: '200px',
+            backgroundImage: `url(${src})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: `${width * zoomLevel}px ${height * zoomLevel}px`,
+            backgroundPosition: `-${magnifierPosition.x * zoomLevel - 50}px -${magnifierPosition.y * zoomLevel - 50}px`,
+            zIndex: 10,
+          }}
+        />
+      )}
+    </div>
+  );
+};
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Hook to navigate to different pages
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,58 +78,50 @@ const ProductPage = () => {
   if (error) return <p className="text-red-600 p-6">Error loading product: {error}</p>;
   if (!product) return <p className="p-6">Loading product...</p>;
 
-  // Function to add product to cart
   const addToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
     if (existingProductIndex >= 0) {
-      // If the product is already in the cart, increment its quantity
       cart[existingProductIndex].quantity += 1;
     } else {
-      // If the product is not in the cart, add it with quantity 1
       cart.push({ ...product, quantity: 1 });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Show Toastify notification
     toast.success('Product added to cart!', {
       position: "top-right",
-      autoClose: 2000, // Auto close after 2 seconds
+      autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Navbar at the top */}
       <Navbar />
 
       <div className="max-w-5xl mx-auto p-6 rounded-lg flex-grow">
-        {/* Back Button */}
         <button
-          onClick={() => navigate('/products')} // Navigates to the products page
+          onClick={() => navigate('/products')}
           className="mb-6 flex items-center hover:underline"
         >
-          <img
-            src={backIcon} // Use the back.png image from your assets
-            alt="Back"
-            className="w-6 h-6 mr-2" // Adjust size of the back icon
-          />
+          <img src={backIcon} alt="Back" className="w-6 h-6 mr-2" />
           Back to Products
         </button>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-full md:w-1/2 h-auto rounded-md border"
-          />
+          <div className="w-full md:w-1/2">
+            <ImageMagnifier
+              src={product.image}
+              width={400}
+              height={500}
+              zoomLevel={2}
+            />
+          </div>
 
           <div className="md:w-1/2">
             <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
@@ -95,7 +134,6 @@ const ProductPage = () => {
 
             <p className="text-2xl text-blue-700 font-semibold mb-6">${product.price}</p>
 
-            {/* Shipping and Other Details */}
             <div className="p-4 rounded-md mb-6 shadow-sm">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">Shipping & Returns</h3>
               <ul className="list-disc pl-5 space-y-1 text-sm">
@@ -108,22 +146,20 @@ const ProductPage = () => {
               </ul>
             </div>
 
-            {/* Description */}
             <div className="p-4 rounded-md mb-6 shadow-sm">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">Product Description</h3>
               <p className="text-sm text-gray-700">{product.description}</p>
             </div>
 
-            {/* Add to Cart Button */}
-            <button 
-              onClick={() => addToCart(product)} 
-              className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300">
-              Add to Cart 
+            <button
+              onClick={() => addToCart(product)}
+              className="bg-white text-blue-600 border-2 border-blue-600 py-3 px-8 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              Add to Cart
             </button>
           </div>
         </div>
 
-        {/* Additional Product Info */}
         {(product.specifications || product.idealFor) && (
           <div className="mt-10">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Product Details</h2>
@@ -153,10 +189,7 @@ const ProductPage = () => {
         )}
       </div>
 
-      {/* Footer at the bottom */}
       <Footer />
-
-      {/* Toastify Notification */}
       <ToastContainer />
     </div>
   );
