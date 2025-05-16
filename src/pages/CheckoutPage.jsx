@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
 import Footer from '../components/Footer';
 import { loadStripe } from '@stripe/stripe-js';
-import backIcon from '../assets/back.png'; // Make sure you have the back.png image in your assets folder
+import backIcon from '../assets/back.png'; // Ensure this image exists
 
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -14,9 +14,10 @@ const CheckoutPage = () => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     if (savedCart.length === 0) {
       navigate('/cart');
+    } else {
+      setCartItems(savedCart);
+      calculateTotalPrice(savedCart);
     }
-    setCartItems(savedCart);
-    calculateTotalPrice(savedCart);
   }, [navigate]);
 
   const calculateTotalPrice = (items) => {
@@ -25,24 +26,42 @@ const CheckoutPage = () => {
   };
 
   const makePayment = async () => {
+    if (cartItems.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
     try {
-      const stripe = await loadStripe("pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED");
+      // Load Stripe.js
+      const stripe = await loadStripe(
+        "pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED"
+      );
 
-      const body = {
-        products: cartItems
-          .filter(item => item.id && item.quantity > 0)
-          .map(item => ({
-            id: Number(item.id),
-            quantity: item.quantity
-          }))
-      };
+      if (!stripe) {
+        alert("Stripe.js failed to load. Please try again later.");
+        return;
+      }
 
+      // Prepare products payload for backend
+      const products = cartItems
+        .filter(item => item.id && item.quantity > 0)
+        .map(item => ({
+          id: Number(item.id),
+          quantity: item.quantity,
+        }));
+
+      if (products.length === 0) {
+        alert("No valid products in cart.");
+        return;
+      }
+
+      // Call backend to create a checkout session
       const response = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify({ products })  // no email sent
       });
 
       if (!response.ok) {
@@ -56,6 +75,7 @@ const CheckoutPage = () => {
         throw new Error("No session ID returned from backend");
       }
 
+      // Redirect to Stripe Checkout page
       const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
       if (result.error) {
@@ -89,9 +109,9 @@ const CheckoutPage = () => {
               className=" flex items-center hover:underline"
             >
               <img
-                src={backIcon} // Use the back.png image from your assets
+                src={backIcon}
                 alt="Back"
-                className="w-6 h-6 mr-2" // Adjust size of the back icon
+                className="w-6 h-6 mr-2"
               />
               Back to Cart
             </button>
@@ -170,11 +190,12 @@ const CheckoutPage = () => {
               <p className="text-sm">14-day hassle-free return policy for any issues with your order.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2">📞 24/7 Support</h3>
-              <p className="text-sm">Our team is available around the clock for help and assistance.</p>
+              <h3 className="text-lg font-semibold mb-2">💬 Support 24/7</h3>
+              <p className="text-sm">Our team is here around the clock to help with any questions.</p>
             </div>
           </div>
 
+          {/* More Info or FAQs could go here */}
         </div>
       </div>
 
