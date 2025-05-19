@@ -12,7 +12,6 @@ const FullProductPage = () => {
   const [error, setError] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [priceFilter, setPriceFilter] = useState('all');
   const [sortOption, setSortOption] = useState('default');
 
   useEffect(() => {
@@ -42,20 +41,18 @@ const FullProductPage = () => {
       );
     }
 
-    if (priceFilter === 'under100') {
-      filtered = filtered.filter((product) => product.price < 100);
-    } else if (priceFilter === 'over100') {
-      filtered = filtered.filter((product) => product.price >= 100);
-    }
-
     if (sortOption === 'az') {
       filtered.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortOption === 'za') {
       filtered.sort((a, b) => b.title.localeCompare(a.title));
+    } else if (sortOption === 'priceHighLow') {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sortOption === 'priceLowHigh') {
+      filtered.sort((a, b) => a.price - b.price);
     }
 
     setDisplayedProducts(filtered);
-  }, [searchQuery, priceFilter, sortOption, products]);
+  }, [searchQuery, sortOption, products]);
 
   if (loading) return <div className="text-center py-10">Loading products...</div>;
   if (error) return <div className="text-center text-red-600 py-10">Error: {error}</div>;
@@ -94,7 +91,7 @@ const FullProductPage = () => {
           </span>
         </h1>
 
-        {/* Search, Filter, and Sort Controls */}
+        {/* Search and Sort Controls */}
         <div className="max-w-[1200px] mx-auto mb-6 mt-20 flex flex-col md:flex-row md:items-center md:justify-end gap-4">
           <input
             type="text"
@@ -105,16 +102,6 @@ const FullProductPage = () => {
           />
 
           <select
-            value={priceFilter}
-            onChange={(e) => setPriceFilter(e.target.value)}
-            className="border border-gray-300 rounded px-4 py-2 w-full md:w-44"
-          >
-            <option value="all">All Prices</option>
-            <option value="under100">Under $100</option>
-            <option value="over100">$100 & Above</option>
-          </select>
-
-          <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
             className="border border-gray-300 rounded px-4 py-2 w-full md:w-44"
@@ -122,6 +109,8 @@ const FullProductPage = () => {
             <option value="default">Default Sort</option>
             <option value="az">Sort A - Z</option>
             <option value="za">Sort Z - A</option>
+            <option value="priceLowHigh">Price: Low to High</option>
+            <option value="priceHighLow">Price: High to Low</option>
           </select>
         </div>
 

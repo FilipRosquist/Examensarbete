@@ -175,8 +175,7 @@ const CheckoutPage = () => {
 
         {/* Additional Info Section */}
         <div className="max-w-7xl mx-auto mt-12 text-gray-700 space-y-12">
-          {/* Trust Badges */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center bg-white p-6 rounded-lg shadow">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center bg-white p-6 rounded-lg shadow">
             <div>
               <h3 className="text-lg font-semibold mb-2">🔒 Secure Payment</h3>
               <p className="text-sm">All transactions are encrypted and processed securely via Stripe.</p>
@@ -189,13 +188,7 @@ const CheckoutPage = () => {
               <h3 className="text-lg font-semibold mb-2">↩️ Easy Returns</h3>
               <p className="text-sm">14-day hassle-free return policy for any issues with your order.</p>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2">💬 Support 24/7</h3>
-              <p className="text-sm">Our team is here around the clock to help with any questions.</p>
-            </div>
           </div>
-
-          {/* More Info or FAQs could go here */}
         </div>
       </div>
 

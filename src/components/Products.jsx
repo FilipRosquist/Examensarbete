@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom'; // ✅ import useNavigate
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -57,7 +59,25 @@ const Products = () => {
     };
 
     const handleAddToCart = (product) => {
-        console.log('Added to cart:', product);
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.id === product.id);
+        
+            if (existingProductIndex >= 0) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+        
+            localStorage.setItem('cart', JSON.stringify(cart));
+        
+            toast.success('Product added to cart!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
     };
 
     if (loading) return <p className="text-center mt-20">Loading products...</p>;
