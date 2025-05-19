@@ -7,7 +7,6 @@ import backIcon from '../assets/back.png';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Custom ImageMagnifier component
 const ImageMagnifier = ({ src, width, height, zoomLevel = 2 }) => {
   const [showMagnifier, setShowMagnifier] = useState(false);
   const [magnifierPosition, setMagnifierPosition] = useState({ x: 0, y: 0 });
@@ -32,7 +31,7 @@ const ImageMagnifier = ({ src, width, height, zoomLevel = 2 }) => {
         ref={imgRef}
         src={src}
         alt="Zoom"
-        className="w-full h-full object-contain" // <-- Changed here!
+        className="w-full h-full object-contain"
       />
       {showMagnifier && (
         <div
