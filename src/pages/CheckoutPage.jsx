@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar2';
 import Footer from '../components/Footer';
 import { loadStripe } from '@stripe/stripe-js';
-import backIcon from '../assets/back.png'; // Ensure this image exists
+import backIcon from '../assets/back.png';
 
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -32,7 +32,6 @@ const CheckoutPage = () => {
     }
 
     try {
-      // Load Stripe.js
       const stripe = await loadStripe(
         "pk_test_51R67CyBUo41pcN8BEfthFT0xYEB9RIPEVC6Mdojthdie3aNDJyrzScR7rGDTxk4d7MKkGPtZHjOweDJYKdL19xDH00CGFzAEED"
       );
@@ -42,7 +41,6 @@ const CheckoutPage = () => {
         return;
       }
 
-      // Prepare products payload for backend
       const products = cartItems
         .filter(item => item.id && item.quantity > 0)
         .map(item => ({
@@ -55,13 +53,12 @@ const CheckoutPage = () => {
         return;
       }
 
-      // Call backend to create a checkout session
       const response = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ products })  // no email sent
+        body: JSON.stringify({ products })
       });
 
       if (!response.ok) {
@@ -75,7 +72,6 @@ const CheckoutPage = () => {
         throw new Error("No session ID returned from backend");
       }
 
-      // Redirect to Stripe Checkout page
       const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
       if (result.error) {
@@ -102,7 +98,6 @@ const CheckoutPage = () => {
 
       <div className="flex-grow bg-gray-100 p-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
-          {/* Back Button */}
           <div className="lg:col-span-3 mt-4 text-left">
             <button
               onClick={() => navigate('/cart')}
