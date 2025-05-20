@@ -13,6 +13,10 @@ Kom igång!
 -Ladda ner/Clona projektet
 -Extracta projektet
 
+Öpprna projektet, skapa en .env fil i backend mappen
+Skriv in:
+- "STRIPE_SECRET_KEY=sk_test_51R67CyBUo41pcN8B1UEXKjQyNBPdPkS8ZkYdRwvnQKXtBIMJWlKWlMnyly0tP19o2o7Jogoi1ZgdtXb2n63AWbSE00m0kHagzl"
+
 Öppna terminalen för Examensarbete-main
 - Skriv in "npm install"
 
