@@ -1,15 +1,13 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import Navbar from '../components/Navbar2'; // Your Navbar component
-import Footer from '../components/Footer'; // Your Footer component
+import Navbar from '../components/Navbar2';
+import Footer from '../components/Footer';
 
 const About = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
       <Navbar />
 
-      {/* About Section */}
       <div className="flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full flex-grow" id="About">
         <h1 className="text-2xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
           About <img src={assets.logoPanEl} alt="Pan-El Logo" className="h-[1em] w-auto" />
@@ -82,7 +80,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

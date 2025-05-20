@@ -88,7 +88,6 @@ const CheckoutPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Satisfaction Guarantee */}
       <div className="bg-green-50 p-6 rounded-lg shadow text-center mb-4 mt-4">
         <h3 className="text-2xl font-bold text-green-700 mb-2">100% Satisfaction Guarantee</h3>
         <p className="text-gray-700 max-w-2xl mx-auto">
@@ -112,7 +111,6 @@ const CheckoutPage = () => {
             </button>
           </div>
 
-          {/* Cart Items */}
           <div className="lg:col-span-2 bg-white shadow-lg rounded-lg p-6">
             <h1 className="text-3xl font-bold mb-6 text-center">Checkout</h1>
             {cartItems.length === 0 ? (
@@ -140,7 +138,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* Summary & Payment */}
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between">
             <div>
               <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
@@ -168,7 +165,6 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        {/* Additional Info Section */}
         <div className="max-w-7xl mx-auto mt-12 text-gray-700 space-y-12">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center bg-white p-6 rounded-lg shadow">
             <div>

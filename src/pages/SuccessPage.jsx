@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logoPanEl.png'; // Make sure the path is correct
+import logo from '../assets/logoPanEl.png';
 
 const SuccessPage = () => {
   useEffect(() => {
-    // Clear cart after successful purchase
     localStorage.removeItem('cart');
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50 px-4">
       <div className="max-w-md w-full bg-white border border-blue-200 rounded-lg shadow-lg p-8 text-center">
-        {/* Pan-El Logo */}
         <img
           src={logo}
           alt="Pan-El Logo"

@@ -91,7 +91,6 @@ const FullProductPage = () => {
           </span>
         </h1>
 
-        {/* Search and Sort Controls */}
         <div className="max-w-[1200px] mx-auto mb-6 mt-20 flex flex-col md:flex-row md:items-center md:justify-end gap-4">
           <input
             type="text"
@@ -114,7 +113,6 @@ const FullProductPage = () => {
           </select>
         </div>
 
-        {/* Product Grid */}
         <div className="max-w-[1200px] mx-auto">
           {displayedProducts.length === 0 ? (
             <p className="text-center text-gray-600">No products match your criteria.</p>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import { assets } from '../assets/assets';
 
 const Footer = () => {
@@ -7,12 +7,10 @@ const Footer = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Handle email input change
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  // Handle the subscription
   const handleSubscribe = async () => {
     if (!email) {
       setErrorMessage('Please enter a valid email address.');
@@ -30,12 +28,12 @@ const Footer = () => {
     const data = await response.json();
 
     if (response.status === 200) {
-      setSuccessMessage(data.message);  // Show success message
-      setEmail('');  // Clear the input field
-      setErrorMessage('');  // Clear any previous error messages
+      setSuccessMessage(data.message);
+      setEmail('');
+      setErrorMessage('');
     } else {
-      setErrorMessage(data.message);  // Show error message
-      setSuccessMessage('');  // Clear any previous success messages
+      setErrorMessage(data.message);
+      setSuccessMessage('');
     }
   };
 

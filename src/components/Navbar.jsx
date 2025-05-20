@@ -17,17 +17,14 @@ const Navbar = () => {
       <div className='w-full'>
         <div className='max-w-screen-2xl mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-32 text-black'>
 
-          {/* Logo Container */}
           <div className='flex-shrink-0'>
             <Link to="/home">
               <img src={assets.logoPanEl} alt="logo" className='h-12 w-auto' />
             </Link>
           </div>
 
-          {/* Navigation Container */}
-          <div className='flex ml-[260px]'> {/* Adjust margin if needed */}
+          <div className='flex ml-[260px]'>
             <ul className='hidden md:flex gap-7 text-white font-medium'>
-              {/* Desktop: white underline on hover */}
               <Link to="/home" className='border-b-2 border-transparent hover:border-white transition'>
                 Home
               </Link>
@@ -43,7 +40,6 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Mobile Menu Icon */}
           <div>
             <img
               onClick={() => setShowMobileMenu(true)}
@@ -55,7 +51,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
       <div
         className={`md:hidden fixed top-0 right-0 bottom-0 bg-white z-30 transition-all duration-300 ${
           showMobileMenu ? 'w-full' : 'w-0 overflow-hidden'
@@ -71,7 +66,6 @@ const Navbar = () => {
         </div>
 
         <ul className='flex flex-col items-center gap-4 mt-5 px-5 text-lg font-medium text-black'>
-          {/* Mobile: black underline only under text */}
           <Link
             to="/home"
             onClick={() => setShowMobileMenu(false)}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom'; // ✅ import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

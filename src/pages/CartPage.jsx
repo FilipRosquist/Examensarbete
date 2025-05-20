@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar2'; // Ensure this path is correct
-import Footer from '../components/Footer'; // Ensure this path is correct
-import backIcon from '../assets/back.png'; // Make sure you have the back.png image in your assets folder
+import Navbar from '../components/Navbar2';
+import Footer from '../components/Footer';
+import backIcon from '../assets/back.png';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  // Load cart items from localStorage
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(savedCart);
     calculateTotalPrice(savedCart);
   }, []);
 
-  // Calculate total price
   const calculateTotalPrice = (items) => {
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    setTotalPrice(total.toFixed(2)); // Format the total price to 2 decimal places
+    setTotalPrice(total.toFixed(2));
   };
 
-  // Remove item from cart
   const removeFromCart = (id) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
@@ -30,7 +27,6 @@ const CartPage = () => {
     calculateTotalPrice(updatedCart);
   };
 
-  // Update item quantity
   const updateQuantity = (id, quantity) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity } : item
@@ -42,19 +38,17 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Back Button */}
       <div className="lg:col-span-3 bg-gray-100 pt-10 pl-[80px] text-left">
         <button
           onClick={() => navigate('/products')}
           className="mb-6 flex items-center hover:underline"
         >
           <img
-            src={backIcon} // Use the back.png image from your assets
+            src={backIcon}
             alt="Back"
-            className="w-6 h-6 mr-2" // Adjust size of the back icon
+            className="w-6 h-6 mr-2"
           />
           Back to Products
         </button>
@@ -73,7 +67,6 @@ const CartPage = () => {
               <div className="space-y-4">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex items-center justify-between p-4 border-b">
-                    {/* Image */}
                     <img
                       src={item.image}
                       alt={item.name}
@@ -81,7 +74,7 @@ const CartPage = () => {
                     />
                     <div className="flex-1 ml-4">
                       <h3 className="text-lg font-semibold">{item.title}</h3>
-                      <p className="text-sm text-gray-600">Price: ${item.price.toFixed(2)}</p> {/* Format item price */}
+                      <p className="text-sm text-gray-600">Price: ${item.price.toFixed(2)}</p>
                     </div>
 
                     <div className="flex items-center space-x-4">
@@ -99,7 +92,7 @@ const CartPage = () => {
                       >
                         +
                       </button>
-                      <span className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</span> {/* Format quantity price */}
+                      <span className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
                       <button
                         onClick={() => removeFromCart(item.id)}
                         className="text-red-600 hover:text-red-800 transition duration-300 ease-in-out"
@@ -113,7 +106,7 @@ const CartPage = () => {
 
               <div className="mt-6 flex justify-between items-center">
                 <div>
-                  <h2 className="text-2xl font-semibold">Total: ${totalPrice}</h2> {/* Format total price */}
+                  <h2 className="text-2xl font-semibold">Total: ${totalPrice}</h2>
                 </div>
                 <div className="flex space-x-4">
                   <Link
@@ -134,8 +127,7 @@ const CartPage = () => {
           )}
         </div>
       </div>
-
-      {/* Footer */}
+      
       <Footer />
     </div>
   );

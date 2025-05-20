@@ -14,11 +14,11 @@ const Header = () => {
       
       <AnimatePresence>
         <motion.div 
-          key="header-motion" // Add a key here to trigger motion on re-route
+          key="header-motion"
           initial={{ opacity: 0, y: 40 }} 
           transition={{ duration: 1.5 }} 
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: false}} // Set this to false to trigger every time the component comes into view
+          viewport={{once: false}}
           className="flex flex-col items-center justify-center text-center min-h-screen px-6 text-white"
         >
           <h2 className="text-5xl sm:text-6xl md:text-[82px] inline-block max-w-3xl font-semibold pt-20">Explore the life with Solar Panels</h2>

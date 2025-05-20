@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logoPanEl.png'; // Ensure this path is correct
+import logo from '../assets/logoPanEl.png';
 
 const CancelPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 px-4">
       <div className="max-w-md w-full bg-white border border-red-200 rounded-lg shadow-lg p-8 text-center">
-        {/* Pan-El Logo */}
         <img
           src={logo}
           alt="Pan-El Logo"
