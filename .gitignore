@@ -1,58 +1,54 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# -----------------------------
+# Node.js dependencies
+# -----------------------------
+node_modules/
+backend/node_modules/
 
-node_modules
-dist
-dist-ssr
-*.local
+# -----------------------------
+# Build outputs
+# -----------------------------
+dist/
+dist-ssr/
+build/
+.cache/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Node.js modules
-/node_modules/
-
-# Environment files (for local development and secret keys)
+# -----------------------------
+# Environment files (secrets)
+# -----------------------------
 .env
 .env.local
 .env.development
 .env.production
 .env.test
+backend/.env
 
+# -----------------------------
 # Logs
+# -----------------------------
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Stripe-related files (if you don't want them tracked)
+# -----------------------------
+# Stripe (optional, if storing files locally)
+# -----------------------------
 stripe/
 
-# Mac system files
-.DS_Store
-
-# IDE / Editor files (if using VSCode, IntelliJ, etc.)
+# -----------------------------
+# Editor / IDE settings
+# -----------------------------
 .vscode/
+!.vscode/extensions.json
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Build outputs
-/dist/
-build/
-
-# Cache files
-.cache/
+# -----------------------------
+# OS/System files
+# -----------------------------
+.DS_Store
