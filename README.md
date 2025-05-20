@@ -10,8 +10,8 @@ Tekniska delar
 - Formulär: Web3Forms
 
 Kom igång!
--Ladda ner/Clona projektet
--Extracta projektet
+- Ladda ner/Clona projektet
+- Extracta projektet
 
 Skapa en .env fil i backend mappen
 Skriv in:
@@ -24,7 +24,7 @@ Kan se ut "C:\Users\XXXXX>Desktop\Examensarbete-main\Examensarbete-main>
 
 Öppna terminalen i Examensarbete-main\backend mappen
 Kan se ut "C:\Users\XXXXX>Desktop\Examensarbete-main\Examensarbete-main\backend>
--Skriv in "npm install"
+- Skriv in "npm install"
 
 När detta är klart är du redo att starta igång projektet genom att starta frontend och backend servern.
 
