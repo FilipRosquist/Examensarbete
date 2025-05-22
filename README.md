@@ -13,11 +13,6 @@ Kom igång!
 - Ladda ner/Clona projektet
 - Extracta projektet
 
-Skapa en .env fil i backend mappen
-Skriv in:
-- "STRIPE_SECRET_KEY=sk_test_51R67CyBUo41pcN8B1UEXKjQyNBPdPkS8ZkYdRwvnQKXtBIMJWlKWlMnyly0tP19o2o7Jogoi1ZgdtXb2n63AWbSE00m0kHagzl"
-- (Detta för att Github ej låter mig pusha med en Secret Key)
-
 Öppna terminalen för Examensarbete-main mappen.
 - Ska se ut "C:\Users\XXXXX\Desktop\Examensarbete-main\Examensarbete-main>
 - Skriv in "npm install"
