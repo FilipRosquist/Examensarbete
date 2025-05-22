@@ -31,4 +31,4 @@ Terminal Examensarbete-main\backend
 
 
 --------------------OBS!------------------------
-!! "npm install dotenv" kan krävas för backend om man ej har det sedan innan !!
+- "npm install dotenv" kan krävas för backend om man ej har det sedan innan !!
