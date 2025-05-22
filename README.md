@@ -28,3 +28,7 @@ Terminal Examensarbete-main:
 
 Terminal Examensarbete-main\backend
 - "node server.js
+
+
+-OBS!
+!! "npm install dotenv" kan krävas för backend om man ej har det sedan innan !!
